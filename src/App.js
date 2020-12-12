@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   display: grid;
-  grid-template-columns: repeat(5, 230px);
-  grid-auto-rows: minmax(345px, auto);
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(20rem, auto);
   grid-gap: 1rem;
   padding: 1rem;
 `;
@@ -43,6 +43,7 @@ class App extends React.Component {
                 title={movie.title}
                 summary={movie.summary}
                 poster={movie.medium_cover_image}
+                genres={movie.genres}
               />
             ))}
       </Wrapper>
