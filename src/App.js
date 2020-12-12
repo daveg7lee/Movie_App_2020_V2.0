@@ -1,6 +1,15 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import styled from "styled-components";
+
+const Wrapper = styled.section`
+  display: grid;
+  grid-template-columns: repeat(5, 230px);
+  grid-auto-rows: minmax(345px, auto);
+  grid-gap: 1rem;
+  padding: 1rem;
+`;
 
 class App extends React.Component {
   state = {
@@ -13,7 +22,7 @@ class App extends React.Component {
         data: { movies },
       },
     } = await axios.get(
-      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
+      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating&limit=50"
     );
     this.setState({ movies, isLoading: false });
   };
@@ -23,7 +32,7 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state;
     return (
-      <div>
+      <Wrapper>
         {isLoading
           ? "Loading..."
           : movies.map((movie) => (
@@ -36,7 +45,7 @@ class App extends React.Component {
                 poster={movie.medium_cover_image}
               />
             ))}
-      </div>
+      </Wrapper>
     );
   }
 }
