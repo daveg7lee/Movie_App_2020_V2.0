@@ -3,12 +3,27 @@ import axios from "axios";
 import Movie from "./Movie";
 import styled from "styled-components";
 
-const Wrapper = styled.section`
+const Grid = styled.section`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: minmax(20rem, auto);
   grid-gap: 1rem;
   padding: 1rem;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Header = styled.section`
+  font-size: 3rem;
+  font-weight: 600;
+  width: 98%;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid ${(props) => props.theme.blackColor};
 `;
 
 class App extends React.Component {
@@ -33,19 +48,22 @@ class App extends React.Component {
     const { isLoading, movies } = this.state;
     return (
       <Wrapper>
-        {isLoading
-          ? "Loading..."
-          : movies.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
-              />
-            ))}
+        <Header>Movie App</Header>
+        <Grid>
+          {isLoading
+            ? "Loading..."
+            : movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                  genres={movie.genres}
+                />
+              ))}
+        </Grid>
       </Wrapper>
     );
   }

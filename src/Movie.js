@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Box = styled.div`
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Poster = styled.img``;
+const Poster = styled.img`
+  max-width: 100%;
+`;
 
 const Data = styled.div``;
 
